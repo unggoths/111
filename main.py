@@ -39,18 +39,6 @@ def chebyshev_distance(x, y):
     """Обчислює чебишевську відстань між двома векторами."""
     return max(abs(a - b) for a, b in zip(x, y))
 
-
-def cosine_distance(point1, point2):
-    """Косинусна відстань між двома точками (1 - косинусна подібність)."""
-    dot_prod = dot_product(point1, point2)
-    norm1 = vector_norm(point1)
-    norm2 = vector_norm(point2)
-    if norm1 * norm2 == 0:  # Уникаємо ділення на нуль
-        return 1.0  # Максимальна відстань, якщо одна з норм дорівнює 0
-    cosine_similarity = dot_prod / (norm1 * norm2)
-    return 1 - cosine_similarity
-
-
 @use_distance_metric(euclidean_distance)  # За замовчуванням використовуємо евклідову відстань
 def knn(x_train, y_train, x_test, k):
     """
